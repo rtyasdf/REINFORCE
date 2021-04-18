@@ -15,3 +15,7 @@ Loss for reinforce algorithm for each trajectory is sum of multiplication of act
 
 ## State normalization
 Every component of state, before give it to neural network mapped to \[0;1\] .
+
+## Graphs
+Mean reward with correspoding standard deviations evaluated after every 20 batches on 30 trajectories is in **mean_reward.png**.
+Some of these trajectories in phase space are in **./trajectories**. Some representation of policy in phase space in **./phase_space**. 
