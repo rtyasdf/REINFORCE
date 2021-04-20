@@ -36,6 +36,7 @@ if __name__ == "__main__":
             done = False
             state = env.reset()
             trajectory_batch.append([])
+            #time_step = 0
             
             while not done:
                 state = transform_state(state)
@@ -43,11 +44,13 @@ if __name__ == "__main__":
                 next_state, reward, done, _ = env.step(action)
                 
                 # Change the reward, otherwise its constant -1
-                reward = 2 * abs(next_state[1]) / 0.07  
+                # Uncomment penalty and `time_step` lines to make use of time agent as alive
+                reward = 2 * abs(next_state[1]) / 0.07  # - (time_step / 500)
                 
                 trajectory_batch[-1].append((state, action, next_state, reward, done))
                 state = next_state
-        
+                #time_step += 1
+                
         # Update
         policy.update(trajectory_batch)
         
